@@ -5,9 +5,9 @@
 
 <p align="left"> <img src="https://komarev.com/ghpvc/?username=codewithsaket&label=Profile%20views&color=0e75b6&style=flat" alt="codewithsaket" /> </p>
 
-- 🔭 I’m currently working on **Personal Finance Manager**
+- 🔭 I’m currently working on **Full stack Web Development**
 
-- 🌱 I’m currently learning **Flutter and Js**
+- 🌱 I’m currently learning **Full stack Web Development using MERN**
 
 - 👯 I’m looking to collaborate on **Jarvis**
 
@@ -39,6 +39,5 @@
 <img src='https://randommeme-five.vercel.app/' style="height: 400px;"/>
 
 ---
-[![](https://visitcount.itsvg.in/api?id=CoderSantosh1&icon=0&color=0)](https://visitcount.itsvg.in)
 
 <p><img align="center" src="https://github-readme-streak-stats.herokuapp.com/?user=codewithsaket&" alt="codewithsaket" /></p>
