@@ -1,4 +1,4 @@
-[![MasterHead](https://www.pinterest.com/pin/1007469379122701118/)]
+[![MasterHead](https://www.pinterest.com/pin/1007469379122701118)]
 /*https://media.tenor.com/qJ5evVs-_uUAAAAC/coding.gif*/
 <h1 align="center">Hi 👋, I'm Saket Raj</h1>
 <h3 align="center">A passionate Software Engineer from Purnea, Bihar, India</h3>
