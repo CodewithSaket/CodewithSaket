@@ -38,7 +38,4 @@
 
 ### 😂 Random Dev Meme
 <img src='https://randommeme-five.vercel.app/' style="height: 400px;"/>
-
----
-
 <p><img align="center" src="https://github-readme-streak-stats.herokuapp.com/?user=codewithsaket&" alt="codewithsaket" /></p>
