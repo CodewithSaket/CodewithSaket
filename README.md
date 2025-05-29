@@ -9,22 +9,23 @@
 
 - 🌱 I’m currently learning **Full stack Web Development using MERN**
 
-- 👯 I’m looking to collaborate on **Jarvis**
+- 👯 I’m looking to collaborate on **E-Commerce Website**
 
 - 🤝 I’m looking for help with **My upcoming projects**
 
 - 👨‍💻 All of my projects are available at [https://github.com/CodewithSaket?tab=repositories](https://github.com/CodewithSaket?tab=repositories)
 
-- 💬 Ask me about **Cyber-Security, Python**
+- 💬 Ask me about **Front-End and SQL**
 
-- 📫 How to reach me **rajsaket1405@gmail.com**
+- 📫 How to reach me **sakettrajj@gmail.com**
 
 - ⚡ Fun fact **I think I am Funny.**
 
 ## 🌐 Socials:
-[![Instagram](https://img.shields.io/badge/Instagram-%23E4405F.svg?logo=Instagram&logoColor=white)](https://www.instagram.com/__.saket.__9797/)
+[![Instagram](https://img.shields.io/badge/Instagram-%23E4405F.svg?logo=Instagram&logoColor=white)](https://www.instagram.com/_sakettomar/)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/saket-raj-321a22242/)
-[![YouTube](https://img.shields.io/badge/YouTube-%23FF0000.svg?logo=YouTube&logoColor=white)](https://www.youtube.com/@saketraj7793/featured) 
+[![YouTube](https://img.shields.io/badge/YouTube-%23FF0000.svg?logo=YouTube&logoColor=white)](https://www.youtube.com/@saketraj7793/featured)
+[![HackerRank](https://img.shields.io/badge/HackerRank-%?logo=HackerRank&logoColor=white)](https://www.hackerrank.com/profile/sakettrajj)
 
 
 # 💻 Tech Stack:
