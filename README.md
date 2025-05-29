@@ -25,7 +25,7 @@
 [![Instagram](https://img.shields.io/badge/Instagram-%23E4405F.svg?logo=Instagram&logoColor=white)](https://www.instagram.com/_sakettomar/)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/saket-raj-321a22242/)
 [![YouTube](https://img.shields.io/badge/YouTube-%23FF0000.svg?logo=YouTube&logoColor=white)](https://www.youtube.com/@saketraj7793/featured)
-[![HackerRank](https://img.shields.io/badge/HackerRank-%?logo=HackerRank&logoColor=white)](https://www.hackerrank.com/profile/sakettrajj)
+[![HackerRank](https://img.shields.io/badge/HackerRank-%23E4409F.svg?logo=HackerRank&logoColor=white)](https://www.hackerrank.com/profile/sakettrajj)
 
 
 # 💻 Tech Stack:
