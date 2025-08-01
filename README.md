@@ -1,40 +1,75 @@
-![MasterHead](https://media.tenor.com/qJ5evVs-_uUAAAAC/coding.gif)
-<h1 align="center">Hi 👋, I'm Saket Raj</h1>
-<h3 align="center">A passionate Front End Developer from Purnea, Bihar, India</h3>
-<img align="right" alt="Coding" width="400" src="https://cdn.dribbble.com/users/1162077/screenshots/3848914/programmer.gif">
+<!-- Profile Banner -->
+![MasterHead](https://i.imgur.com/5ZQ5fFd.png) <!-- Replace with your custom banner -->
 
-<p align="left"> <img src="https://komarev.com/ghpvc/?username=codewithsaket&label=Profile%20views&color=0e75b6&style=flat" alt="codewithsaket" /> </p>
+<h1 align="center">
+  Hi 👋, I'm Saket Raj
+</h1>
 
-- 🔭 I’m currently working on **E-commerce Website**
+<h3 align="center">
+  A passionate Front End Developer from Purnea, Bihar, India
+</h3>
 
-- 🌱 I’m currently learning **Full stack Web Development using MERN**
+<!-- Typing animation -->
+<p align="center">
+  <a href="https://github.com/SaketRaj">
+    <img src="https://readme-typing-svg.herokuapp.com?size=25&color=FF5733&center=true&vCenter=true&width=500&lines=Front+End+Developer;MERN+Stack+Learner;Open+Source+Contributor;Love+to+Build+Web+Apps" />
+  </a>
+</p>
 
-- 👯 I’m looking to collaborate on **E-Commerce Website**
+---
 
-- 🤝 I’m looking for help with **My upcoming projects**
+![Profile views](https://komarev.com/ghpvc/?username=SaketRaj&color=blue&style=flat-square)
+[![GitHub followers](https://img.shields.io/github/followers/SaketRaj?label=Follow&style=social)](https://github.com/SaketRaj)
 
-- 👨‍💻 All of my projects are available at [https://github.com/CodewithSaket?tab=repositories](https://github.com/CodewithSaket?tab=repositories)
+---
 
-- 💬 Ask me about **Front-End and SQL**
+- 🏗 I’m currently working on **E-commerce Website**  
+- 🌱 I’m currently learning **Full Stack Web Development using MERN**  
+- 🤝 I’m looking to collaborate on **E-Commerce Website**  
+- 🤔 I’m looking for help with **My upcoming projects**  
+- 💻 All of my projects are available at [My GitHub](https://github.com/SaketRaj)  
 
-- 📫 How to reach me **sakettrajj@gmail.com**
+---
 
-- ⚡ Fun fact **I think I am Funny.**
+### 🛠️ Languages and Tools:
+<p align="left"> 
+  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original.svg" alt="html5" width="40" height="40"/>
+  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original.svg" alt="css3" width="40" height="40"/> 
+  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" alt="javascript" width="40" height="40"/> 
+  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg" alt="react" width="40" height="40"/> 
+  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original.svg" alt="nodejs" width="40" height="40"/> 
+  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mongodb/mongodb-original.svg" alt="mongodb" width="40" height="40"/>
+</p>
 
-## 🌐 Socials:
-[![Instagram](https://img.shields.io/badge/Instagram-%23E4405F.svg?logo=Instagram&logoColor=white)](https://www.instagram.com/_sakettomar/)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/saket-raj-321a22242/)
-[![YouTube](https://img.shields.io/badge/YouTube-%23FF0000.svg?logo=YouTube&logoColor=white)](https://www.youtube.com/@saketraj7793/featured)
-[![HackerRank](https://img.shields.io/badge/HackerRank-%23E4409F.svg?logo=HackerRank&logoColor=white)](https://www.hackerrank.com/profile/sakettrajj)
+---
 
+### 📊 GitHub Stats:
+<p align="center">
+  <img src="https://github-readme-stats.vercel.app/api?username=SaketRaj&show_icons=true&theme=radical" alt="GitHub Stats" height="180"/>
+  <img src="https://github-readme-streak-stats.herokuapp.com/?user=SaketRaj&theme=radical" alt="GitHub Streak Stats" height="180"/>
+</p>
 
-# 💻 Tech Stack:
- ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)  ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E) ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white) ![PHP](https://img.shields.io/badge/php-%23777BB4.svg?style=for-the-badge&logo=php&logoColor=white)  ![Bootstrap](https://img.shields.io/badge/bootstrap-%238511FA.svg?style=for-the-badge&logo=bootstrap&logoColor=white) ![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)  ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)  ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) ![React Native](https://img.shields.io/badge/react_native-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) ![React Query](https://img.shields.io/badge/-React%20Query-FF4154?style=for-the-badge&logo=react%20query&logoColor=white) ![Spring](https://img.shields.io/badge/spring-%236DB33F.svg?style=for-the-badge&logo=spring&logoColor=white) ![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white) ![WordPress](https://img.shields.io/badge/WordPress-%23117AC9.svg?style=for-the-badge&logo=WordPress&logoColor=white) ![MySQL](https://img.shields.io/badge/mysql-%2300000f.svg?style=for-the-badge&logo=mysql&logoColor=white) ![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white) ![Matplotlib](https://img.shields.io/badge/Matplotlib-%23ffffff.svg?style=for-the-badge&logo=Matplotlib&logoColor=black)  ![GIT](https://img.shields.io/badge/Git-fc6d26?style=for-the-badge&logo=git&logoColor=white)
+---
 
-<p><img align="left" src="https://github-readme-stats.vercel.app/api/top-langs?username=codewithsaket&show_icons=true&locale=en&layout=compact" alt="codewithsaket" /></p>
+### 📈 Activity Graph
+<p align="center">
+  <img src="https://github-readme-activity-graph.vercel.app/graph?username=SaketRaj&theme=react-dark&bg_color=0D1117&hide_border=true" width="95%"/>
+</p>
 
-<p>&nbsp;<img align="center" src="https://github-readme-stats.vercel.app/api?username=codewithsaket&show_icons=true&locale=en" alt="codewithsaket" /></p>
+---
 
-### 😂 Random Dev Meme
-<img src='https://randommeme-five.vercel.app/' style="height: 400px;"/>
-<p><img align="center" src="https://github-readme-streak-stats.herokuapp.com/?user=codewithsaket&" alt="codewithsaket" /></p>
+### 🏆 GitHub Trophies
+<p align="center">
+  <img src="https://github-profile-trophy.vercel.app/?username=SaketRaj&theme=darkhub&margin-w=15&margin-h=15"/>
+</p>
+
+---
+
+### 🔗 Connect with me:
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-blue?style=for-the-badge&logo=linkedin)](https://linkedin.com/in/your-profile)
+[![Portfolio](https://img.shields.io/badge/Portfolio-orange?style=for-the-badge&logo=google-chrome)](https://your-portfolio-link)
+[![Instagram](https://img.shields.io/badge/Instagram-pink?style=for-the-badge&logo=instagram)](https://instagram.com/your-profile)
+
+---
+
+⭐ **Pro Tip:** Replace all `your-profile` and banner URLs with your **real links** for LinkedIn, portfolio, and Instagram.
