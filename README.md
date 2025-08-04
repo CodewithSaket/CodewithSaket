@@ -1,5 +1,5 @@
 <!-- Profile Banner -->
-![MasterHead](https://i.imgur.com/5ZQ5fFd.png) <!-- Replace with your custom banner -->
+![MasterHead](https://user-images.githubusercontent.com/74038190/212746035-d5c61762-973c-44c0-aec7-887f3b7690e3.gif)
 
 <h1 align="center">
   Hi 👋, I'm Saket Raj
@@ -39,6 +39,7 @@
   <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg" alt="react" width="40" height="40"/> 
   <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original.svg" alt="nodejs" width="40" height="40"/> 
   <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mongodb/mongodb-original.svg" alt="mongodb" width="40" height="40"/>
+  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" alt="python" width="40" height="40"/> 
 </p>
 
 ---
@@ -66,10 +67,9 @@
 ---
 
 ### 🔗 Connect with me:
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-blue?style=for-the-badge&logo=linkedin)](https://linkedin.com/in/your-profile)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-blue?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/-saket-raj/)
 [![Portfolio](https://img.shields.io/badge/Portfolio-orange?style=for-the-badge&logo=google-chrome)](https://your-portfolio-link)
-[![Instagram](https://img.shields.io/badge/Instagram-pink?style=for-the-badge&logo=instagram)](https://instagram.com/your-profile)
+[![Instagram](https://img.shields.io/badge/Instagram-pink?style=for-the-badge&logo=instagram)](https://www.instagram.com/_sakettomar/)
 
 ---
 
-⭐ **Pro Tip:** Replace all `your-profile` and banner URLs with your **real links** for LinkedIn, portfolio, and Instagram.
