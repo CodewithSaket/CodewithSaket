@@ -68,7 +68,6 @@
 
 ### 🔗 Connect with me:
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-blue?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/-saket-raj/)
-[![Portfolio](https://img.shields.io/badge/Portfolio-orange?style=for-the-badge&logo=google-chrome)](https://your-portfolio-link)
 [![Instagram](https://img.shields.io/badge/Instagram-pink?style=for-the-badge&logo=instagram)](https://www.instagram.com/_sakettomar/)
 
 ---
