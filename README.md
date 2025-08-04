@@ -23,11 +23,11 @@
 
 ---
 
-- 🏗 I’m currently working on **E-commerce Website**  
+- 🏗 I’m currently working on **E-commerce Website created with the help of React**  
 - 🌱 I’m currently learning **Full Stack Web Development using MERN**  
 - 🤝 I’m looking to collaborate on **E-Commerce Website**  
 - 🤔 I’m looking for help with **My upcoming projects**  
-- 💻 All of my projects are available at [My GitHub](https://github.com/SaketRaj)  
+- 💻 All of my projects are available at [My GitHub](https://github.com/CodewithSaket)  
 
 ---
 
