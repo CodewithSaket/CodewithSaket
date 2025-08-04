@@ -1,7 +1,7 @@
 <!-- Profile Banner -->
-![MasterHead](https://user-images.githubusercontent.com/74038190/212746035-d5c61762-973c-44c0-aec7-887f3b7690e3.gif)
+
 ![MasterHead](https://user-images.githubusercontent.com/74038190/235224431-e8c8c12e-6826-47f1-89fb-2ddad83b3abf.gif)
-![MasterHead](https://user-images.githubusercontent.com/74038190/219923823-bf1ce878-c6b8-4faa-be07-93e6b1006521.gif)
+
 
 <h1 align="center">
   Hi 👋, I'm Saket Raj
@@ -23,6 +23,8 @@
 ![Profile views](https://komarev.com/ghpvc/?username=SaketRaj&color=blue&style=flat-square)
 [![GitHub followers](https://img.shields.io/github/followers/SaketRaj?label=Follow&style=social)](https://github.com/SaketRaj)
 
+
+![MasterHead](https://user-images.githubusercontent.com/74038190/212746035-d5c61762-973c-44c0-aec7-887f3b7690e3.gif)
 ---
 
 - 🏗 I’m currently working on **E-commerce Website created with the help of React**  
@@ -73,4 +75,5 @@
 [![Instagram](https://img.shields.io/badge/Instagram-pink?style=for-the-badge&logo=instagram)](https://www.instagram.com/_sakettomar/)
 
 ---
+![MasterHead](https://user-images.githubusercontent.com/74038190/219923823-bf1ce878-c6b8-4faa-be07-93e6b1006521.gif)
 
