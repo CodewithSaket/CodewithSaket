@@ -49,25 +49,7 @@
 
 ---
 
-### 📊 GitHub Stats:
-<p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=SaketRaj&show_icons=true&theme=radical" alt="GitHub Stats" height="180"/>
-  <img src="https://github-readme-streak-stats.herokuapp.com/?user=SaketRaj&theme=radical" alt="GitHub Streak Stats" height="180"/>
-</p>
 
----
-
-### 📈 Activity Graph
-<p align="center">
-  <img src="https://github-readme-activity-graph.vercel.app/graph?username=SaketRaj&theme=react-dark&bg_color=0D1117&hide_border=true" width="95%"/>
-</p>
-
----
-
-### 🏆 GitHub Trophies
-<p align="center">
-  <img src="https://github-profile-trophy.vercel.app/?username=SaketRaj&theme=darkhub&margin-w=15&margin-h=15"/>
-</p>
 
 ---
 
