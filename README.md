@@ -23,12 +23,19 @@ body{
   color:var(--text);
   font-family:'Exo 2',sans-serif;
   overflow-x:hidden;
-  cursor:none;
+  /* Removed cursor:none from body — only hide when JS cursor is ready */
 }
+body.cursor-ready { cursor: none; }
 
 /* ── CUSTOM CURSOR ── */
-#cur{position:fixed;top:0;left:0;pointer-events:none;z-index:9999}
-#cur canvas{display:block}
+#cur{
+  position:fixed;top:0;left:0;
+  pointer-events:none;z-index:9999;
+  /* Start hidden, shown via JS */
+  opacity:0;transition:opacity .3s;
+}
+#cur.active{opacity:1}
+#curCanvas{display:block}
 
 /* ── STARFIELD ── */
 #stars{position:fixed;inset:0;z-index:0;pointer-events:none}
@@ -50,12 +57,16 @@ nav{
   text-shadow:0 0 20px var(--neon),0 0 40px rgba(0,255,231,.3);
   animation:logoPulse 3s ease-in-out infinite;
 }
-@keyframes logoPulse{0%,100%{text-shadow:0 0 20px var(--neon),0 0 40px rgba(0,255,231,.3)}50%{text-shadow:0 0 40px var(--neon),0 0 80px rgba(0,255,231,.5),0 0 120px rgba(0,255,231,.2)}}
+@keyframes logoPulse{
+  0%,100%{text-shadow:0 0 20px var(--neon),0 0 40px rgba(0,255,231,.3)}
+  50%{text-shadow:0 0 40px var(--neon),0 0 80px rgba(0,255,231,.5),0 0 120px rgba(0,255,231,.2)}
+}
 .nav-links{display:flex;gap:28px}
 .nav-links a{
   font-family:'Share Tech Mono',monospace;font-size:12px;
   color:var(--dim);text-decoration:none;letter-spacing:.1em;
   transition:all .2s;position:relative;
+  cursor:pointer;
 }
 .nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--neon);transition:width .3s}
 .nav-links a:hover{color:var(--neon)}
@@ -68,7 +79,13 @@ nav{
   padding:6px 14px;border-radius:20px;
   background:rgba(0,255,231,.04);
 }
-.status-dot{width:7px;height:7px;background:var(--neon);border-radius:50%;animation:blink 1.2s ease-in-out infinite;box-shadow:0 0 8px var(--neon)}
+.status-dot{
+  width:7px;height:7px;
+  background:var(--neon);border-radius:50%;
+  animation:blink 1.2s ease-in-out infinite;
+  box-shadow:0 0 8px var(--neon);
+  flex-shrink:0;
+}
 @keyframes blink{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.3;transform:scale(.7)}}
 
 /* ── HERO ── */
@@ -80,8 +97,8 @@ nav{
 }
 .hero-left{flex:1;max-width:680px;z-index:2}
 .hero-right{
-  position:absolute;right:0;top:50%;transform:translateY(-50%);
-  width:480px;z-index:1;
+  position:absolute;right:48px;top:50%;transform:translateY(-50%);
+  width:440px;z-index:1;
 }
 
 .glitch-wrap{margin-bottom:10px}
@@ -109,11 +126,13 @@ nav{
   display:block;
   color:var(--pink);
   -webkit-text-fill-color:var(--pink);
-  text-shadow:none;
   filter:drop-shadow(0 0 30px var(--pink));
   animation:nameGlow 2s ease-in-out infinite;
 }
-@keyframes nameGlow{0%,100%{filter:drop-shadow(0 0 30px var(--pink))}50%{filter:drop-shadow(0 0 60px var(--pink)) drop-shadow(0 0 100px rgba(255,45,120,.4))}}
+@keyframes nameGlow{
+  0%,100%{filter:drop-shadow(0 0 30px var(--pink))}
+  50%{filter:drop-shadow(0 0 60px var(--pink)) drop-shadow(0 0 100px rgba(255,45,120,.4))}
+}
 
 /* GLITCH TEXT */
 .glitch{
@@ -171,7 +190,7 @@ nav{
   color:var(--neon);
   font-family:'Orbitron',monospace;font-size:12px;font-weight:700;
   padding:14px 28px;text-decoration:none;letter-spacing:.1em;
-  cursor:none;
+  cursor:pointer;
   position:relative;overflow:hidden;
   transition:all .3s;
   text-transform:uppercase;
@@ -191,11 +210,11 @@ nav{
   background:var(--pink);border:2px solid var(--pink);
   color:#fff;font-family:'Orbitron',monospace;font-size:12px;font-weight:700;
   padding:14px 28px;text-decoration:none;letter-spacing:.1em;
-  cursor:none;transition:all .3s;text-transform:uppercase;
+  cursor:pointer;transition:all .3s;text-transform:uppercase;
 }
 .btn-pink:hover{background:transparent;color:var(--pink);box-shadow:0 0 40px rgba(255,45,120,.5)}
 
-/* ── ASTRONAUT CHARACTER ── */
+/* ── ASTRONAUT ── */
 .astronaut-wrap{
   opacity:0;animation:fadeLeft .8s ease forwards 1.4s;
   transform-origin:center;
@@ -236,7 +255,7 @@ section{position:relative;z-index:1;padding:100px 48px}
 .about-text p b{color:var(--neon)}
 .about-text p em{color:var(--pink);font-style:normal}
 
-/* Robot Character */
+/* Robot */
 .robot-scene{position:relative;display:flex;justify-content:center;align-items:center}
 .robot-svg{width:280px;animation:robotBob 2s ease-in-out infinite}
 @keyframes robotBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
@@ -246,9 +265,10 @@ section{position:relative;z-index:1;padding:100px 48px}
   background:radial-gradient(ellipse,rgba(0,255,231,.3) 0%,transparent 70%);
   animation:shadowPulse 2s ease-in-out infinite;
 }
-@keyframes shadowPulse{0%,100%{opacity:.5;transform:translateX(-50%) scaleX(1)}50%{opacity:1;transform:translateX(-50%) scaleX(.7)}}
-
-/* Speech bubble */
+@keyframes shadowPulse{
+  0%,100%{opacity:.5;transform:translateX(-50%) scaleX(1)}
+  50%{opacity:1;transform:translateX(-50%) scaleX(.7)}
+}
 .speech{
   position:absolute;top:10px;right:-20px;
   background:rgba(0,255,231,.1);
@@ -257,6 +277,7 @@ section{position:relative;z-index:1;padding:100px 48px}
   font-family:'Share Tech Mono',monospace;font-size:12px;
   color:var(--neon);white-space:nowrap;
   animation:speechBounce 3s ease-in-out infinite;
+  z-index:10;
 }
 .speech::after{
   content:'';position:absolute;bottom:-10px;left:0;
@@ -266,7 +287,10 @@ section{position:relative;z-index:1;padding:100px 48px}
 @keyframes speechBounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
 
 /* ── SKILLS ── */
-.skills-outer{background:rgba(0,255,231,.02);border:1px solid rgba(0,255,231,.07);padding:48px;position:relative;overflow:hidden}
+.skills-outer{
+  background:rgba(0,255,231,.02);border:1px solid rgba(0,255,231,.07);
+  padding:48px;position:relative;overflow:hidden;
+}
 .skills-outer::before{
   content:'SKILLS';
   position:absolute;right:-20px;top:50%;transform:translateY(-50%) rotate(90deg);
@@ -274,7 +298,6 @@ section{position:relative;z-index:1;padding:100px 48px}
   color:rgba(0,255,231,.03);letter-spacing:.2em;pointer-events:none;
   white-space:nowrap;
 }
-
 .skill-rows{display:flex;flex-direction:column;gap:20px}
 .skill-row{display:flex;align-items:center;gap:20px}
 .skill-icon-wrap{
@@ -284,7 +307,7 @@ section{position:relative;z-index:1;padding:100px 48px}
   background:rgba(0,255,231,.05);
   font-size:24px;
   transition:all .3s;
-  cursor:none;
+  cursor:pointer;
 }
 .skill-icon-wrap:hover{
   border-color:var(--neon);
@@ -292,31 +315,32 @@ section{position:relative;z-index:1;padding:100px 48px}
   transform:scale(1.1) rotate(5deg);
   box-shadow:0 0 20px rgba(0,255,231,.3);
 }
-.skill-info{flex:1}
+.skill-info{flex:1;min-width:0}
 .skill-name{
   font-family:'Orbitron',sans-serif;font-size:13px;font-weight:700;
   color:var(--text);margin-bottom:8px;
-  display:flex;justify-content:space-between;
+  display:flex;justify-content:space-between;align-items:center;
 }
-.skill-pct{color:var(--neon);font-size:12px}
+.skill-pct{color:var(--neon);font-size:12px;flex-shrink:0}
 .skill-bar{height:4px;background:rgba(255,255,255,.06);border-radius:2px;overflow:hidden}
+
+/* FIX: skill bars now use width set by JS, not CSS scaleX */
 .skill-fill{
   height:100%;border-radius:2px;
   background:linear-gradient(90deg,var(--neon),var(--blue));
-  transform:scaleX(0);transform-origin:left;
-  transition:transform 1s ease var(--delay);
+  width:0%; /* start at 0, JS animates to target */
+  transition:width 1.2s cubic-bezier(.25,.46,.45,.94);
 }
 .skill-fill.pink{background:linear-gradient(90deg,var(--pink),var(--purple))}
 .skill-fill.gold{background:linear-gradient(90deg,var(--gold),var(--pink))}
-.skills-outer.visible .skill-fill{transform:scaleX(1)}
 
-/* ── CURRENTLY BUILDING ── */
+/* ── BUILDING ── */
 .build-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
 .build-card{
   border:1px solid rgba(0,255,231,.12);
   background:rgba(0,255,231,.02);
   padding:36px;position:relative;overflow:hidden;
-  transition:all .3s;cursor:none;
+  transition:all .3s;cursor:pointer;
 }
 .build-card::before{
   content:'';position:absolute;inset:0;
@@ -329,8 +353,14 @@ section{position:relative;z-index:1;padding:100px 48px}
   transform:translateY(-6px);
   box-shadow:0 20px 60px rgba(0,0,0,.5),0 0 0 1px rgba(0,255,231,.08),inset 0 1px 0 rgba(0,255,231,.1);
 }
-.build-card .emoji{font-size:44px;display:block;margin-bottom:20px;animation:emojiFloat 3s ease-in-out infinite}
-@keyframes emojiFloat{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-8px) rotate(5deg)}}
+.build-card .emoji{
+  font-size:44px;display:block;margin-bottom:20px;
+  animation:emojiFloat 3s ease-in-out infinite;
+}
+@keyframes emojiFloat{
+  0%,100%{transform:translateY(0) rotate(0deg)}
+  50%{transform:translateY(-8px) rotate(5deg)}
+}
 .build-status{
   font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:.2em;
   padding:4px 10px;border-radius:20px;display:inline-block;margin-bottom:16px;
@@ -354,12 +384,12 @@ section{position:relative;z-index:1;padding:100px 48px}
 }
 
 /* ── PROJECTS ── */
-.proj-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:20px}
+.proj-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px}
 .proj-card{
   background:rgba(255,255,255,.02);
   border:1px solid rgba(255,255,255,.06);
   padding:32px;position:relative;overflow:hidden;
-  transition:all .3s;cursor:none;
+  transition:all .3s;cursor:pointer;
 }
 .proj-card::after{
   content:'';position:absolute;
@@ -389,6 +419,7 @@ section{position:relative;z-index:1;padding:100px 48px}
   color:var(--neon);text-decoration:none;letter-spacing:.1em;
   display:inline-flex;align-items:center;gap:8px;
   transition:gap .2s;
+  cursor:pointer;
 }
 .proj-link:hover{gap:14px}
 
@@ -403,7 +434,7 @@ section{position:relative;z-index:1;padding:100px 48px}
   border:1px solid rgba(255,255,255,.06);
   background:rgba(255,255,255,.02);
   text-decoration:none;
-  transition:all .25s;cursor:none;
+  transition:all .25s;cursor:pointer;
   position:relative;overflow:hidden;
 }
 .link-card::before{
@@ -430,8 +461,7 @@ section{position:relative;z-index:1;padding:100px 48px}
 footer{
   position:relative;z-index:1;
   border-top:1px solid rgba(0,255,231,.08);
-  padding:48px;
-  text-align:center;
+  padding:48px;text-align:center;
 }
 .footer-ascii{
   font-family:'Share Tech Mono',monospace;
@@ -439,6 +469,8 @@ footer{
   line-height:1.4;letter-spacing:.05em;
   margin-bottom:24px;
   animation:asciiGlow 4s ease-in-out infinite;
+  overflow:hidden;white-space:nowrap;
+  text-overflow:ellipsis;
 }
 @keyframes asciiGlow{0%,100%{color:rgba(0,255,231,.2)}50%{color:rgba(0,255,231,.4)}}
 .footer-text{font-family:'Orbitron',monospace;font-size:13px;font-weight:700;color:var(--neon);letter-spacing:.15em;margin-bottom:8px}
@@ -462,10 +494,13 @@ footer{
 @keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
 @keyframes fadeLeft{from{opacity:0;transform:translateX(30px)}to{opacity:1;transform:translateX(0)}}
 
-/* ── SCAN LINE OVERLAY ── */
+/* ── SCAN LINES ── */
 .scanlines{
   position:fixed;inset:0;z-index:999;pointer-events:none;
-  background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,.08) 2px,rgba(0,0,0,.08) 4px);
+  background:repeating-linear-gradient(
+    0deg,transparent,transparent 2px,
+    rgba(0,0,0,.08) 2px,rgba(0,0,0,.08) 4px
+  );
   opacity:.4;
 }
 
@@ -488,17 +523,21 @@ footer{
   nav{padding:16px 24px}
   .nav-links{display:none}
   footer{padding:32px 24px}
+  .footer-ascii{font-size:8px}
+}
+@media(max-width:600px){
+  .proj-grid{grid-template-columns:1fr}
+  .speech{display:none}
 }
 </style>
 </head>
 <body>
 
-<!-- Scan lines -->
 <div class="scanlines"></div>
 <div class="corner-tl"></div>
 <div class="corner-br"></div>
 
-<!-- Custom cursor canvas -->
+<!-- Custom cursor -->
 <div id="cur"><canvas id="curCanvas" width="60" height="60"></canvas></div>
 
 <!-- Starfield -->
@@ -517,7 +556,7 @@ footer{
   <div class="status-pill"><div class="status-dot"></div>open to collab</div>
 </nav>
 
-<!-- ═══════════════ HERO ═══════════════ -->
+<!-- ═══ HERO ═══ -->
 <section class="hero" id="home">
   <div class="hero-left">
     <div class="glitch-wrap">
@@ -544,19 +583,17 @@ footer{
     </div>
   </div>
 
-  <!-- ASTRONAUT SVG CHARACTER -->
+  <!-- ASTRONAUT -->
   <div class="hero-right">
     <div class="astronaut-wrap">
       <svg class="astronaut-svg" viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg">
-        <!-- Stars around astronaut -->
-        <g class="stars-anim">
+        <g>
           <circle cx="30" cy="60" r="2" fill="#00ffe7" opacity=".6"><animate attributeName="opacity" values=".6;0;.6" dur="2s" repeatCount="indefinite"/></circle>
           <circle cx="370" cy="100" r="1.5" fill="#ff2d78" opacity=".8"><animate attributeName="opacity" values=".8;0;.8" dur="1.5s" begin=".5s" repeatCount="indefinite"/></circle>
           <circle cx="360" cy="380" r="2" fill="#ffd700" opacity=".7"><animate attributeName="opacity" values=".7;0;.7" dur="2.5s" begin="1s" repeatCount="indefinite"/></circle>
           <circle cx="20" cy="400" r="1" fill="#a855f7" opacity=".9"><animate attributeName="opacity" values=".9;0;.9" dur="1.8s" begin=".3s" repeatCount="indefinite"/></circle>
           <circle cx="200" cy="20" r="2.5" fill="#38bdf8" opacity=".5"><animate attributeName="opacity" values=".5;1;.5" dur="3s" repeatCount="indefinite"/></circle>
         </g>
-
         <!-- Jetpack exhaust -->
         <g opacity=".7">
           <ellipse cx="160" cy="390" rx="12" ry="8" fill="#00ffe7"><animate attributeName="ry" values="8;14;8" dur=".4s" repeatCount="indefinite"/><animate attributeName="opacity" values=".7;.3;.7" dur=".4s" repeatCount="indefinite"/></ellipse>
@@ -564,29 +601,22 @@ footer{
           <ellipse cx="160" cy="405" rx="7" ry="18" fill="rgba(0,255,231,.4)"><animate attributeName="ry" values="18;28;18" dur=".3s" repeatCount="indefinite"/></ellipse>
           <ellipse cx="240" cy="405" rx="7" ry="18" fill="rgba(255,45,120,.4)"><animate attributeName="ry" values="18;28;18" dur=".3s" begin=".15s" repeatCount="indefinite"/></ellipse>
         </g>
-
         <!-- Jetpack body -->
         <rect x="140" y="300" width="40" height="60" rx="8" fill="#1a1a2e" stroke="#00ffe7" stroke-width="1.5"/>
         <rect x="220" y="300" width="40" height="60" rx="8" fill="#1a1a2e" stroke="#00ffe7" stroke-width="1.5"/>
         <rect x="155" y="270" width="90" height="90" rx="10" fill="#0d0d1a" stroke="rgba(0,255,231,.3)" stroke-width="1"/>
-        <!-- Jetpack lights -->
         <circle cx="170" cy="295" r="5" fill="#00ffe7"><animate attributeName="fill" values="#00ffe7;#fff;#00ffe7" dur=".8s" repeatCount="indefinite"/></circle>
         <circle cx="230" cy="295" r="5" fill="#ff2d78"><animate attributeName="fill" values="#ff2d78;#fff;#ff2d78" dur=".8s" begin=".4s" repeatCount="indefinite"/></circle>
-
         <!-- Suit body -->
         <ellipse cx="200" cy="260" rx="65" ry="80" fill="#e8e8f0"/>
         <ellipse cx="200" cy="260" rx="60" ry="75" fill="#d0d0e8"/>
-
-        <!-- Suit chest details -->
+        <!-- Chest panel -->
         <rect x="175" y="230" width="50" height="35" rx="6" fill="#1a1a2e" stroke="#00ffe7" stroke-width="1.5"/>
-        <!-- Chest screen -->
         <rect x="180" y="235" width="40" height="25" rx="4" fill="#050508"/>
         <text x="200" y="252" text-anchor="middle" font-family="'Share Tech Mono',monospace" font-size="8" fill="#00ffe7">SAKET.exe</text>
-
-        <!-- Left arm -->
+        <!-- Arms -->
         <ellipse cx="130" cy="270" rx="22" ry="45" fill="#d0d0e8" transform="rotate(-15 130 270)"/>
         <ellipse cx="118" cy="310" rx="16" ry="16" fill="#e8e8f0"/>
-        <!-- Right arm (wave animation) -->
         <g>
           <ellipse cx="270" cy="250" rx="22" ry="45" fill="#d0d0e8" transform="rotate(15 270 250)">
             <animateTransform attributeName="transform" type="rotate" values="15 270 250;25 270 250;15 270 250" dur="1.5s" repeatCount="indefinite"/>
@@ -595,67 +625,49 @@ footer{
             <animateTransform attributeName="transform" type="rotate" values="0 285 288;10 285 288;0 285 288" dur="1.5s" repeatCount="indefinite"/>
           </ellipse>
         </g>
-
         <!-- Legs -->
         <ellipse cx="175" cy="355" rx="22" ry="45" fill="#c8c8e0" transform="rotate(-5 175 355)"/>
         <ellipse cx="225" cy="355" rx="22" ry="45" fill="#c8c8e0" transform="rotate(5 225 355)"/>
-        <!-- Boots -->
         <ellipse cx="170" cy="392" rx="24" ry="12" fill="#2d2d4a"/>
         <ellipse cx="230" cy="392" rx="24" ry="12" fill="#2d2d4a"/>
-
         <!-- Helmet -->
         <ellipse cx="200" cy="160" rx="72" ry="76" fill="#c8d8f8"/>
         <ellipse cx="200" cy="160" rx="68" ry="72" fill="#ddeeff"/>
-        <!-- Visor -->
         <ellipse cx="200" cy="162" rx="52" ry="54" fill="#050520"/>
         <ellipse cx="200" cy="162" rx="48" ry="50" fill="#0a0a30"/>
-        <!-- Visor reflection -->
         <ellipse cx="188" cy="148" rx="16" ry="22" fill="rgba(255,255,255,.06)" transform="rotate(-15 188 148)"/>
         <path d="M178 140 Q182 134 188 138" stroke="rgba(255,255,255,.3)" stroke-width="2" fill="none" stroke-linecap="round"/>
-
-        <!-- Eyes inside visor -->
+        <!-- Eyes -->
         <ellipse cx="182" cy="155" rx="8" ry="9" fill="#00ffe7" opacity=".9">
           <animate attributeName="ry" values="9;2;9" dur="4s" begin="2s" repeatCount="indefinite"/>
         </ellipse>
         <ellipse cx="218" cy="155" rx="8" ry="9" fill="#00ffe7" opacity=".9">
           <animate attributeName="ry" values="9;2;9" dur="4s" begin="2s" repeatCount="indefinite"/>
         </ellipse>
-        <!-- Pupils -->
         <ellipse cx="184" cy="157" rx="4" ry="5" fill="#002a25"/>
         <ellipse cx="220" cy="157" rx="4" ry="5" fill="#002a25"/>
-        <!-- Shine in eyes -->
         <circle cx="186" cy="153" r="2" fill="rgba(255,255,255,.5)"/>
         <circle cx="222" cy="153" r="2" fill="rgba(255,255,255,.5)"/>
-
-        <!-- Smile / antenna glow -->
         <path d="M190 170 Q200 178 210 170" stroke="rgba(0,255,231,.5)" stroke-width="2" fill="none" stroke-linecap="round"/>
-
-        <!-- Helmet ring -->
+        <!-- Helmet ring & antenna -->
         <ellipse cx="200" cy="100" rx="72" ry="16" fill="none" stroke="rgba(0,255,231,.4)" stroke-width="2"/>
-        <!-- Antenna -->
         <line x1="200" y1="88" x2="200" y2="60" stroke="#d0d0e8" stroke-width="3" stroke-linecap="round"/>
         <circle cx="200" cy="55" r="8" fill="#ff2d78">
           <animate attributeName="r" values="8;12;8" dur="1s" repeatCount="indefinite"/>
           <animate attributeName="fill" values="#ff2d78;#ffd700;#ff2d78" dur="1s" repeatCount="indefinite"/>
         </circle>
-
-        <!-- Neon outline glow on helmet -->
         <ellipse cx="200" cy="160" rx="72" ry="76" fill="none" stroke="rgba(0,255,231,.2)" stroke-width="3">
           <animate attributeName="stroke-opacity" values=".2;.6;.2" dur="2s" repeatCount="indefinite"/>
         </ellipse>
-
-        <!-- Floating code text -->
+        <!-- Floating code -->
         <text x="50" y="140" font-family="'Share Tech Mono',monospace" font-size="10" fill="rgba(0,255,231,.35)" transform="rotate(-20 50 140)">
-          &lt;React/&gt;
-          <animate attributeName="opacity" values=".35;.7;.35" dur="3s" repeatCount="indefinite"/>
+          &lt;React/&gt;<animate attributeName="opacity" values=".35;.7;.35" dur="3s" repeatCount="indefinite"/>
         </text>
         <text x="300" y="200" font-family="'Share Tech Mono',monospace" font-size="10" fill="rgba(255,45,120,.4)" transform="rotate(15 300 200)">
-          npm run dev
-          <animate attributeName="opacity" values=".4;.8;.4" dur="2.5s" begin=".5s" repeatCount="indefinite"/>
+          npm run dev<animate attributeName="opacity" values=".4;.8;.4" dur="2.5s" begin=".5s" repeatCount="indefinite"/>
         </text>
         <text x="40" y="320" font-family="'Share Tech Mono',monospace" font-size="9" fill="rgba(255,215,0,.3)">
-          git push 🚀
-          <animate attributeName="opacity" values=".3;.6;.3" dur="3.5s" begin="1s" repeatCount="indefinite"/>
+          git push 🚀<animate attributeName="opacity" values=".3;.6;.3" dur="3.5s" begin="1s" repeatCount="indefinite"/>
         </text>
       </svg>
     </div>
@@ -667,7 +679,7 @@ footer{
   </div>
 </section>
 
-<!-- ═══════════════ ABOUT ═══════════════ -->
+<!-- ═══ ABOUT ═══ -->
 <section id="about">
   <div class="sec-label reveal">PROFILE</div>
   <div class="sec-title reveal">About <span class="highlight">Me</span></div>
@@ -682,34 +694,20 @@ footer{
 
     <div class="robot-scene reveal" style="position:relative">
       <div class="speech">console.log("Let's build! 🚀")</div>
-      <!-- Robot SVG -->
       <svg class="robot-svg" viewBox="0 0 280 340" xmlns="http://www.w3.org/2000/svg">
-        <!-- Glow base -->
         <ellipse cx="140" cy="330" rx="70" ry="10" fill="rgba(0,255,231,.15)"/>
-
-        <!-- Body -->
         <rect x="70" y="150" width="140" height="130" rx="18" fill="#0f0f1a" stroke="#00ffe7" stroke-width="2"/>
-        <!-- Body glow -->
         <rect x="70" y="150" width="140" height="130" rx="18" fill="none" stroke="rgba(0,255,231,.2)" stroke-width="6"/>
-
-        <!-- Chest panel -->
         <rect x="90" y="168" width="100" height="70" rx="8" fill="#050510" stroke="rgba(0,255,231,.3)" stroke-width="1"/>
-        <!-- Chest lights -->
         <circle cx="108" cy="185" r="7" fill="#ff2d78"><animate attributeName="opacity" values="1;.3;1" dur=".8s" repeatCount="indefinite"/></circle>
         <circle cx="130" cy="185" r="7" fill="#ffd700"><animate attributeName="opacity" values="1;.3;1" dur=".8s" begin=".27s" repeatCount="indefinite"/></circle>
         <circle cx="152" cy="185" r="7" fill="#00ffe7"><animate attributeName="opacity" values="1;.3;1" dur=".8s" begin=".54s" repeatCount="indefinite"/></circle>
-        <!-- Chest screen -->
         <rect x="90" y="200" width="100" height="30" rx="4" fill="#050508"/>
         <text x="140" y="220" text-anchor="middle" font-family="'Share Tech Mono',monospace" font-size="9" fill="#00ffe7">
-          SAKET.DEV
-          <animate attributeName="fill" values="#00ffe7;#ff2d78;#ffd700;#00ffe7" dur="3s" repeatCount="indefinite"/>
+          SAKET.DEV<animate attributeName="fill" values="#00ffe7;#ff2d78;#ffd700;#00ffe7" dur="3s" repeatCount="indefinite"/>
         </text>
-
-        <!-- Left arm -->
         <rect x="30" y="155" width="38" height="100" rx="14" fill="#0f0f1a" stroke="#00ffe7" stroke-width="1.5"/>
         <circle cx="49" cy="265" r="14" fill="#1a1a2e" stroke="#00ffe7" stroke-width="1.5"/>
-
-        <!-- Right arm (wave) -->
         <g>
           <rect x="212" y="145" width="38" height="100" rx="14" fill="#0f0f1a" stroke="#ff2d78" stroke-width="1.5">
             <animateTransform attributeName="transform" type="rotate" values="-5 231 165;10 231 165;-5 231 165" dur="1.2s" repeatCount="indefinite"/>
@@ -718,25 +716,15 @@ footer{
             <animateTransform attributeName="transform" type="rotate" values="-5 231 165;10 231 165;-5 231 165" dur="1.2s" repeatCount="indefinite"/>
           </circle>
         </g>
-
-        <!-- Legs -->
         <rect x="90" y="278" width="38" height="55" rx="10" fill="#0f0f1a" stroke="#00ffe7" stroke-width="1.5"/>
         <rect x="152" y="278" width="38" height="55" rx="10" fill="#0f0f1a" stroke="#00ffe7" stroke-width="1.5"/>
-        <!-- Feet -->
         <rect x="82" y="328" width="52" height="14" rx="7" fill="#1a1a2e" stroke="rgba(0,255,231,.4)" stroke-width="1"/>
         <rect x="146" y="328" width="52" height="14" rx="7" fill="#1a1a2e" stroke="rgba(0,255,231,.4)" stroke-width="1"/>
-
-        <!-- Neck -->
         <rect x="122" y="118" width="36" height="34" rx="6" fill="#0d0d18" stroke="rgba(0,255,231,.3)" stroke-width="1"/>
-
-        <!-- Head -->
         <rect x="70" y="40" width="140" height="84" rx="20" fill="#0f0f1a" stroke="#00ffe7" stroke-width="2"/>
         <rect x="70" y="40" width="140" height="84" rx="20" fill="none" stroke="rgba(0,255,231,.2)" stroke-width="8"/>
-
-        <!-- Eyes -->
         <rect x="88" y="56" width="42" height="32" rx="8" fill="#050508" stroke="#00ffe7" stroke-width="1.5"/>
         <rect x="150" y="56" width="42" height="32" rx="8" fill="#050508" stroke="#00ffe7" stroke-width="1.5"/>
-        <!-- Eye glow -->
         <ellipse cx="109" cy="72" rx="14" ry="11" fill="#00ffe7" opacity=".9">
           <animate attributeName="ry" values="11;4;11" dur="3.5s" begin="1s" repeatCount="indefinite"/>
         </ellipse>
@@ -745,11 +733,8 @@ footer{
         </ellipse>
         <ellipse cx="109" cy="72" rx="7" ry="7" fill="#003330"/>
         <ellipse cx="171" cy="72" rx="7" ry="7" fill="#003330"/>
-        <!-- Pupils shine -->
         <circle cx="112" cy="69" r="3" fill="rgba(255,255,255,.5)"/>
         <circle cx="174" cy="69" r="3" fill="rgba(255,255,255,.5)"/>
-
-        <!-- Mouth -->
         <rect x="100" y="100" width="80" height="14" rx="7" fill="#050508" stroke="rgba(0,255,231,.3)" stroke-width="1"/>
         <rect x="103" y="103" width="18" height="8" rx="3" fill="#00ffe7" opacity=".8">
           <animate attributeName="width" values="18;12;18" dur=".5s" repeatCount="indefinite"/>
@@ -761,14 +746,10 @@ footer{
           <animate attributeName="width" values="18;10;18" dur=".5s" begin=".1s" repeatCount="indefinite"/>
         </rect>
         <rect x="169" y="103" width="8" height="8" rx="3" fill="#a855f7" opacity=".8"/>
-
-        <!-- Antenna -->
         <line x1="140" y1="40" x2="140" y2="14" stroke="#d0d0e8" stroke-width="3" stroke-linecap="round"/>
         <circle cx="140" cy="10" r="7" fill="#ff2d78">
           <animate attributeName="r" values="7;10;7" dur="1.2s" repeatCount="indefinite"/>
         </circle>
-
-        <!-- Side bolts -->
         <circle cx="72" cy="100" r="5" fill="#00ffe7" opacity=".5"/>
         <circle cx="208" cy="100" r="5" fill="#00ffe7" opacity=".5"/>
       </svg>
@@ -777,7 +758,7 @@ footer{
   </div>
 </section>
 
-<!-- ═══════════════ SKILLS ═══════════════ -->
+<!-- ═══ SKILLS ═══ -->
 <section id="skills" style="background:rgba(0,255,231,.01)">
   <div class="sec-label reveal">CAPABILITIES</div>
   <div class="sec-title reveal">Tech <span class="highlight-pink">Stack</span></div>
@@ -788,63 +769,63 @@ footer{
         <div class="skill-icon-wrap">🌐</div>
         <div class="skill-info">
           <div class="skill-name">HTML5 <span class="skill-pct">92%</span></div>
-          <div class="skill-bar"><div class="skill-fill" style="--delay:.1s;width:92%"></div></div>
+          <div class="skill-bar"><div class="skill-fill" data-width="92"></div></div>
         </div>
       </div>
       <div class="skill-row">
         <div class="skill-icon-wrap">🎨</div>
         <div class="skill-info">
           <div class="skill-name">CSS3 / Animations <span class="skill-pct">88%</span></div>
-          <div class="skill-bar"><div class="skill-fill pink" style="--delay:.2s;width:88%"></div></div>
+          <div class="skill-bar"><div class="skill-fill pink" data-width="88"></div></div>
         </div>
       </div>
       <div class="skill-row">
         <div class="skill-icon-wrap">⚡</div>
         <div class="skill-info">
           <div class="skill-name">JavaScript (ES6+) <span class="skill-pct">80%</span></div>
-          <div class="skill-bar"><div class="skill-fill gold" style="--delay:.3s;width:80%"></div></div>
+          <div class="skill-bar"><div class="skill-fill gold" data-width="80"></div></div>
         </div>
       </div>
       <div class="skill-row">
         <div class="skill-icon-wrap">⚛️</div>
         <div class="skill-info">
           <div class="skill-name">React.js <span class="skill-pct">72%</span></div>
-          <div class="skill-bar"><div class="skill-fill" style="--delay:.4s;width:72%"></div></div>
+          <div class="skill-bar"><div class="skill-fill" data-width="72"></div></div>
         </div>
       </div>
       <div class="skill-row">
         <div class="skill-icon-wrap">🟢</div>
         <div class="skill-info">
           <div class="skill-name">Node.js / Express <span class="skill-pct">55%</span></div>
-          <div class="skill-bar"><div class="skill-fill pink" style="--delay:.5s;width:55%"></div></div>
+          <div class="skill-bar"><div class="skill-fill pink" data-width="55"></div></div>
         </div>
       </div>
       <div class="skill-row">
         <div class="skill-icon-wrap">🍃</div>
         <div class="skill-info">
           <div class="skill-name">MongoDB <span class="skill-pct">50%</span></div>
-          <div class="skill-bar"><div class="skill-fill gold" style="--delay:.6s;width:50%"></div></div>
+          <div class="skill-bar"><div class="skill-fill gold" data-width="50"></div></div>
         </div>
       </div>
       <div class="skill-row">
         <div class="skill-icon-wrap">🐍</div>
         <div class="skill-info">
           <div class="skill-name">Python <span class="skill-pct">45%</span></div>
-          <div class="skill-bar"><div class="skill-fill" style="--delay:.7s;width:45%"></div></div>
+          <div class="skill-bar"><div class="skill-fill" data-width="45"></div></div>
         </div>
       </div>
       <div class="skill-row">
         <div class="skill-icon-wrap">🐙</div>
         <div class="skill-info">
-          <div class="skill-name">Git & GitHub <span class="skill-pct">85%</span></div>
-          <div class="skill-bar"><div class="skill-fill pink" style="--delay:.8s;width:85%"></div></div>
+          <div class="skill-name">Git &amp; GitHub <span class="skill-pct">85%</span></div>
+          <div class="skill-bar"><div class="skill-fill pink" data-width="85"></div></div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════ BUILDING ═══════════════ -->
+<!-- ═══ BUILDING ═══ -->
 <section id="building">
   <div class="sec-label reveal">WIP</div>
   <div class="sec-title reveal">Currently <span class="highlight">Building</span></div>
@@ -858,7 +839,6 @@ footer{
       <div class="prog-bar"><div class="prog-fill" style="width:65%"></div></div>
       <div class="prog-label"><span>progress</span><span>65%</span></div>
     </div>
-
     <div class="build-card reveal">
       <span class="emoji" style="animation-delay:.5s">🌐</span>
       <div class="build-status status-wip">🟡 LEARNING</div>
@@ -870,7 +850,7 @@ footer{
   </div>
 </section>
 
-<!-- ═══════════════ WORK ═══════════════ -->
+<!-- ═══ WORK ═══ -->
 <section id="work">
   <div class="sec-label reveal">PORTFOLIO</div>
   <div class="sec-title reveal"><span class="highlight-pink">Selected</span> Work</div>
@@ -879,17 +859,15 @@ footer{
     <div class="proj-card reveal">
       <div class="proj-tag-row"><span class="ptag ptag-n">HTML</span><span class="ptag ptag-g">CSS</span><span class="ptag ptag-p">JS</span></div>
       <div class="proj-title">⚡ To-Do List App</div>
-      <div class="proj-desc">Minimal, elegant task manager. Clean UI, smooth interactions, local persistence. Proof that fundamentals done right are always impressive. Simplicity is the ultimate sophistication.</div>
+      <div class="proj-desc">Minimal, elegant task manager. Clean UI, smooth interactions, local persistence. Proof that fundamentals done right are always impressive.</div>
       <a href="https://github.com/CodewithSaket/To-Do-List" target="_blank" class="proj-link">View Repo →</a>
     </div>
-
     <div class="proj-card reveal">
       <div class="proj-tag-row"><span class="ptag ptag-n">React</span><span class="ptag ptag-g">Node</span><span class="ptag ptag-p">MongoDB</span></div>
       <div class="proj-title">🛒 E-Commerce UI</div>
       <div class="proj-desc">React-powered shopping experience. Component-based architecture, responsive layout, smooth UX. In active development — watch this space. 🚀</div>
       <a href="https://github.com/CodewithSaket" target="_blank" class="proj-link">Follow Progress →</a>
     </div>
-
     <div class="proj-card reveal">
       <div class="proj-tag-row"><span class="ptag ptag-g">11 Repos</span><span class="ptag ptag-p">Open Source</span></div>
       <div class="proj-title">🗂 All Repositories</div>
@@ -899,7 +877,7 @@ footer{
   </div>
 </section>
 
-<!-- ═══════════════ CONNECT ═══════════════ -->
+<!-- ═══ CONNECT ═══ -->
 <section id="connect">
   <div class="sec-label reveal">SOCIALS</div>
   <div class="sec-title reveal">Let's <span class="highlight">Connect</span></div>
@@ -921,48 +899,34 @@ footer{
         <div class="link-info"><span class="link-name">Instagram</span><span class="link-sub">@_sakettomar</span></div>
         <div class="link-arrow">↗</div>
       </a>
-      <a href="#" class="link-card">
+      <a href="mailto:saketraj@example.com" class="link-card">
         <div class="link-icon">✉️</div>
         <div class="link-info"><span class="link-name">Email</span><span class="link-sub">Drop a message</span></div>
         <div class="link-arrow">↗</div>
       </a>
     </div>
 
-    <!-- Coder character -->
     <div class="reveal" style="display:flex;justify-content:center;align-items:center">
       <svg class="coder-svg" viewBox="0 0 300 340" xmlns="http://www.w3.org/2000/svg">
-        <!-- Desk glow -->
         <rect x="20" y="270" width="260" height="8" rx="4" fill="#0f0f1a" stroke="rgba(0,255,231,.3)" stroke-width="1"/>
         <ellipse cx="150" cy="278" rx="130" ry="10" fill="rgba(0,255,231,.05)"/>
-
-        <!-- Monitor -->
         <rect x="60" y="130" width="180" height="130" rx="10" fill="#050510" stroke="#00ffe7" stroke-width="2"/>
         <rect x="65" y="135" width="170" height="120" rx="7" fill="#020208"/>
-        <!-- Monitor glow -->
         <rect x="60" y="130" width="180" height="130" rx="10" fill="none" stroke="rgba(0,255,231,.15)" stroke-width="8"/>
-
-        <!-- Code on screen -->
         <text x="74" y="154" font-family="'Share Tech Mono',monospace" font-size="9" fill="rgba(255,45,120,.8)">&lt;div className="hero"&gt;</text>
         <text x="80" y="167" font-family="'Share Tech Mono',monospace" font-size="9" fill="rgba(0,255,231,.7)">  &lt;h1&gt;Saket Raj&lt;/h1&gt;</text>
         <text x="80" y="180" font-family="'Share Tech Mono',monospace" font-size="9" fill="rgba(168,85,247,.8)">  &lt;p&gt;Full Stack Dev&lt;/p&gt;</text>
         <text x="74" y="193" font-family="'Share Tech Mono',monospace" font-size="9" fill="rgba(255,45,120,.8)">&lt;/div&gt;</text>
         <text x="74" y="208" font-family="'Share Tech Mono',monospace" font-size="9" fill="rgba(255,215,0,.6)">// building the future 🚀</text>
-        <!-- cursor blink -->
         <rect x="74" y="214" width="6" height="11" fill="#00ffe7" rx="1">
           <animate attributeName="opacity" values="1;0;1" dur=".8s" repeatCount="indefinite"/>
         </rect>
-        <!-- Screen scanline -->
         <rect x="65" y="135" width="170" height="2" fill="rgba(0,255,231,.08)" opacity=".5">
           <animate attributeName="y" values="135;255;135" dur="3s" repeatCount="indefinite"/>
         </rect>
-
-        <!-- Monitor stand -->
         <rect x="135" y="260" width="30" height="12" rx="3" fill="#1a1a2e" stroke="rgba(0,255,231,.2)" stroke-width="1"/>
         <rect x="120" y="270" width="60" height="6" rx="3" fill="#1a1a2e" stroke="rgba(0,255,231,.2)" stroke-width="1"/>
-
-        <!-- Keyboard -->
         <rect x="80" y="285" width="140" height="30" rx="6" fill="#0f0f1a" stroke="rgba(0,255,231,.3)" stroke-width="1.5"/>
-        <!-- Keys -->
         <g fill="rgba(0,255,231,.25)">
           <rect x="86" y="290" width="12" height="8" rx="2"/>
           <rect x="101" y="290" width="12" height="8" rx="2"/>
@@ -974,175 +938,180 @@ footer{
           <rect x="191" y="290" width="12" height="8" rx="2"/>
           <rect x="100" y="301" width="100" height="8" rx="2" fill="rgba(0,255,231,.15)"/>
         </g>
-
-        <!-- Person (sitting) -->
-        <!-- Body -->
+        <!-- Person -->
         <ellipse cx="60" cy="220" rx="30" ry="40" fill="#1a1a2e" stroke="rgba(255,45,120,.4)" stroke-width="1"/>
-        <!-- Head -->
         <circle cx="60" cy="165" r="28" fill="#f5c5a3"/>
-        <!-- Hair -->
         <ellipse cx="60" cy="148" rx="28" ry="12" fill="#2d1810"/>
         <rect x="32" y="148" width="12" height="18" rx="6" fill="#2d1810"/>
         <rect x="56" y="136" width="8" height="16" rx="4" fill="#3d2018"/>
-        <!-- Eyes -->
         <circle cx="50" cy="168" r="4" fill="#1a0a00"/>
         <circle cx="70" cy="168" r="4" fill="#1a0a00"/>
         <circle cx="51" cy="166" r="1.5" fill="white"/>
         <circle cx="71" cy="166" r="1.5" fill="white"/>
-        <!-- Focused expression -->
         <path d="M47 163 Q50 160 53 163" stroke="#333" stroke-width="1.5" fill="none"/>
         <path d="M67 163 Q70 160 73 163" stroke="#333" stroke-width="1.5" fill="none"/>
-        <!-- Smile -->
         <path d="M53 178 Q60 184 67 178" stroke="#c0906a" stroke-width="2" fill="none" stroke-linecap="round"/>
-
-        <!-- Arms typing -->
         <line x1="40" y1="200" x2="95" y2="285" stroke="#f5c5a3" stroke-width="10" stroke-linecap="round"/>
         <line x1="80" y1="200" x2="130" y2="285" stroke="#f5c5a3" stroke-width="10" stroke-linecap="round">
           <animateTransform attributeName="transform" type="rotate" values="-3 80 200;3 80 200;-3 80 200" dur=".4s" repeatCount="indefinite"/>
         </line>
-
-        <!-- Coffee cup -->
+        <!-- Coffee -->
         <rect x="10" y="260" width="28" height="22" rx="4" fill="#3d2018" stroke="rgba(255,215,0,.4)" stroke-width="1"/>
         <rect x="10" y="260" width="28" height="8" rx="3" fill="#5d3020"/>
-        <!-- Steam -->
         <path d="M18 256 Q15 248 18 240" stroke="rgba(255,255,255,.2)" stroke-width="2" fill="none" stroke-linecap="round">
           <animate attributeName="opacity" values=".2;.6;.2" dur="2s" repeatCount="indefinite"/>
         </path>
         <path d="M25 254 Q22 244 25 236" stroke="rgba(255,255,255,.15)" stroke-width="2" fill="none" stroke-linecap="round">
           <animate attributeName="opacity" values=".15;.5;.15" dur="2.5s" begin=".5s" repeatCount="indefinite"/>
         </path>
-        <!-- Coffee label -->
         <text x="16" y="275" font-family="'Share Tech Mono',monospace" font-size="7" fill="rgba(255,215,0,.6)">☕</text>
       </svg>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════ FOOTER ═══════════════ -->
+<!-- ═══ FOOTER ═══ -->
 <footer>
   <div class="footer-ascii">
-████████████████████████████████████████████████████████████████████████████████████████
-█  ░░  CODE WITH SAKET  ░░  SAKET RAJ  ░░  PURNEA, BIHAR  ░░  MERN STACK  ░░  2025  █
-████████████████████████████████████████████████████████████████████████████████████████
+█  CODE WITH SAKET  ·  SAKET RAJ  ·  PURNEA, BIHAR  ·  MERN STACK  ·  2025  █
   </div>
   <div class="footer-text">⟨ KEEP BUILDING · KEEP SHIPPING · NEVER STOP LEARNING /⟩</div>
   <div class="footer-sub">Made with ❤️ + ☕ + 🎧 by Saket Raj · CodewithSaket</div>
 </footer>
 
 <script>
-// ══ STARS CANVAS ══
+// ══ STARS ══
 const sc = document.getElementById('stars');
 const sctx = sc.getContext('2d');
-sc.width = window.innerWidth; sc.height = window.innerHeight;
-window.addEventListener('resize', () => { sc.width = window.innerWidth; sc.height = window.innerHeight; });
+function resizeStars(){sc.width=window.innerWidth;sc.height=window.innerHeight;}
+resizeStars();
+window.addEventListener('resize',resizeStars);
 
-const stars = Array.from({length:200}, () => ({
-  x: Math.random()*sc.width, y: Math.random()*sc.height,
-  r: Math.random()*1.8+.2, speed: Math.random()*.3+.05,
-  opacity: Math.random(), opSpeed: Math.random()*.01+.003,
-  opDir: 1, color: ['#00ffe7','#ff2d78','#ffd700','#a855f7','#ffffff'][Math.floor(Math.random()*5)]
+const stars=Array.from({length:200},()=>({
+  x:Math.random()*sc.width,y:Math.random()*sc.height,
+  r:Math.random()*1.8+.2,speed:Math.random()*.3+.05,
+  opacity:Math.random(),opSpeed:Math.random()*.01+.003,opDir:1,
+  color:['#00ffe7','#ff2d78','#ffd700','#a855f7','#ffffff'][Math.floor(Math.random()*5)]
 }));
 
-function animStars() {
+function animStars(){
   sctx.clearRect(0,0,sc.width,sc.height);
-  stars.forEach(s => {
-    s.opacity += s.opSpeed * s.opDir;
-    if(s.opacity >= 1 || s.opacity <= 0) s.opDir *= -1;
+  stars.forEach(s=>{
+    s.opacity+=s.opSpeed*s.opDir;
+    if(s.opacity>=1||s.opacity<=0)s.opDir*=-1;
     sctx.beginPath();
-    sctx.arc(s.x, s.y, s.r, 0, Math.PI*2);
-    sctx.fillStyle = s.color;
-    sctx.globalAlpha = s.opacity * .7;
+    sctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+    sctx.fillStyle=s.color;
+    sctx.globalAlpha=s.opacity*.7;
     sctx.fill();
-    sctx.globalAlpha = 1;
+    sctx.globalAlpha=1;
   });
   requestAnimationFrame(animStars);
 }
 animStars();
 
-// ══ CUSTOM CURSOR (particle trail) ══
-const curCanvas = document.getElementById('curCanvas');
-const curCtx = curCanvas.getContext('2d');
-let mx = window.innerWidth/2, my = window.innerHeight/2;
-const curDiv = document.getElementById('cur');
-const particles = [];
+// ══ CUSTOM CURSOR ══
+const curCanvas=document.getElementById('curCanvas');
+const curCtx=curCanvas.getContext('2d');
+const curDiv=document.getElementById('cur');
+const particles=[];
+let cursorReady=false;
 
-document.addEventListener('mousemove', e => {
-  mx = e.clientX; my = e.clientY;
-  curDiv.style.left = (mx - 30) + 'px';
-  curDiv.style.top = (my - 30) + 'px';
-  for(let i = 0; i < 3; i++) {
+document.addEventListener('mousemove',e=>{
+  if(!cursorReady){
+    cursorReady=true;
+    curDiv.classList.add('active');
+    document.body.classList.add('cursor-ready');
+  }
+  curDiv.style.left=(e.clientX-30)+'px';
+  curDiv.style.top=(e.clientY-30)+'px';
+  for(let i=0;i<3;i++){
     particles.push({
-      x: 30, y: 30,
-      vx: (Math.random()-.5)*4, vy: (Math.random()-.5)*4,
-      life: 1, decay: Math.random()*.04+.02,
-      r: Math.random()*3+1,
-      color: ['#00ffe7','#ff2d78','#ffd700','#a855f7'][Math.floor(Math.random()*4)]
+      x:30,y:30,
+      vx:(Math.random()-.5)*4,vy:(Math.random()-.5)*4,
+      life:1,decay:Math.random()*.04+.02,
+      r:Math.random()*3+1,
+      color:['#00ffe7','#ff2d78','#ffd700','#a855f7'][Math.floor(Math.random()*4)]
     });
   }
 });
 
-function animCursor() {
-  curCtx.clearRect(0, 0, 60, 60);
-  // Core dot
+function animCursor(){
+  curCtx.clearRect(0,0,60,60);
   curCtx.beginPath();
-  curCtx.arc(30, 30, 5, 0, Math.PI*2);
-  curCtx.fillStyle = '#00ffe7';
-  curCtx.shadowColor = '#00ffe7';
-  curCtx.shadowBlur = 12;
+  curCtx.arc(30,30,5,0,Math.PI*2);
+  curCtx.fillStyle='#00ffe7';
+  curCtx.shadowColor='#00ffe7';
+  curCtx.shadowBlur=12;
   curCtx.fill();
-  curCtx.shadowBlur = 0;
-
-  // Ring
+  curCtx.shadowBlur=0;
   curCtx.beginPath();
-  curCtx.arc(30, 30, 14, 0, Math.PI*2);
-  curCtx.strokeStyle = 'rgba(0,255,231,.4)';
-  curCtx.lineWidth = 1;
+  curCtx.arc(30,30,14,0,Math.PI*2);
+  curCtx.strokeStyle='rgba(0,255,231,.4)';
+  curCtx.lineWidth=1;
   curCtx.stroke();
-
-  particles.forEach((p, i) => {
-    p.x += p.vx; p.y += p.vy; p.life -= p.decay;
-    if(p.life <= 0) { particles.splice(i, 1); return; }
+  particles.forEach((p,i)=>{
+    p.x+=p.vx;p.y+=p.vy;p.life-=p.decay;
+    if(p.life<=0){particles.splice(i,1);return;}
     curCtx.beginPath();
-    curCtx.arc(p.x, p.y, p.r * p.life, 0, Math.PI*2);
-    curCtx.fillStyle = p.color;
-    curCtx.globalAlpha = p.life;
+    curCtx.arc(p.x,p.y,p.r*p.life,0,Math.PI*2);
+    curCtx.fillStyle=p.color;
+    curCtx.globalAlpha=p.life;
     curCtx.fill();
-    curCtx.globalAlpha = 1;
+    curCtx.globalAlpha=1;
   });
-
   requestAnimationFrame(animCursor);
 }
 animCursor();
 
 // ══ SCROLL REVEAL ══
-const reveals = document.querySelectorAll('.reveal');
-const revObs = new IntersectionObserver(entries => {
-  entries.forEach((e, idx) => {
-    if(e.isIntersecting) {
-      setTimeout(() => e.target.classList.add('visible'), (idx % 5) * 100);
+const reveals=document.querySelectorAll('.reveal');
+const revObs=new IntersectionObserver(entries=>{
+  entries.forEach((e,idx)=>{
+    if(e.isIntersecting){
+      setTimeout(()=>e.target.classList.add('visible'),(idx%5)*100);
     }
   });
-}, {threshold: .08});
-reveals.forEach(r => revObs.observe(r));
+},{threshold:.08});
+reveals.forEach(r=>revObs.observe(r));
 
-// ══ SKILL BARS ══
-const skillBox = document.getElementById('skillsBox');
-const skillObs = new IntersectionObserver(entries => {
-  if(entries[0].isIntersecting) {
-    skillBox.classList.add('visible');
+// ══ SKILL BARS — fixed: use width%, not scaleX ══
+const skillBox=document.getElementById('skillsBox');
+let skillsAnimated=false;
+
+function animateSkills(){
+  if(skillsAnimated)return;
+  skillsAnimated=true;
+  document.querySelectorAll('.skill-fill').forEach((el,i)=>{
+    const target=el.dataset.width||'0';
+    setTimeout(()=>{
+      el.style.width=target+'%';
+    },i*80);
+  });
+}
+
+const skillObs=new IntersectionObserver(entries=>{
+  if(entries[0].isIntersecting){
+    animateSkills();
     skillObs.disconnect();
   }
-}, {threshold: .3});
+},{threshold:.2});
 skillObs.observe(skillBox);
 
+// Also trigger if already in view on load
+window.addEventListener('load',()=>{
+  const rect=skillBox.getBoundingClientRect();
+  if(rect.top<window.innerHeight)animateSkills();
+});
+
 // ══ CLICK EXPLOSION ══
-document.addEventListener('click', e => {
-  for(let i = 0; i < 20; i++) {
-    const p = document.createElement('div');
-    const angle = (i / 20) * Math.PI * 2;
-    const vel = Math.random() * 80 + 40;
-    const color = ['#00ffe7','#ff2d78','#ffd700','#a855f7','#38bdf8'][Math.floor(Math.random()*5)];
-    p.style.cssText = `
+document.addEventListener('click',e=>{
+  for(let i=0;i<20;i++){
+    const p=document.createElement('div');
+    const angle=(i/20)*Math.PI*2;
+    const vel=Math.random()*80+40;
+    const color=['#00ffe7','#ff2d78','#ffd700','#a855f7','#38bdf8'][Math.floor(Math.random()*5)];
+    p.style.cssText=`
       position:fixed;left:${e.clientX}px;top:${e.clientY}px;
       width:${Math.random()*5+2}px;height:${Math.random()*5+2}px;
       background:${color};border-radius:50%;
@@ -1151,23 +1120,23 @@ document.addEventListener('click', e => {
       box-shadow:0 0 6px ${color};
     `;
     document.body.appendChild(p);
-    requestAnimationFrame(() => {
-      p.style.transform = `translate(${Math.cos(angle)*vel}px,${Math.sin(angle)*vel}px)`;
-      p.style.opacity = '0';
+    requestAnimationFrame(()=>{
+      p.style.transform=`translate(${Math.cos(angle)*vel}px,${Math.sin(angle)*vel}px)`;
+      p.style.opacity='0';
     });
-    setTimeout(() => p.remove(), 700);
+    setTimeout(()=>p.remove(),700);
   }
 });
 
-// ══ CURSOR HOVER EFFECT ══
-document.querySelectorAll('a,button,.skill-icon-wrap,.build-card,.proj-card,.link-card').forEach(el => {
-  el.addEventListener('mouseenter', () => {
-    curCanvas.style.transform = 'scale(1.8)';
-    curCanvas.style.filter = 'hue-rotate(180deg)';
+// ══ CURSOR HOVER EFFECTS ══
+document.querySelectorAll('a,button,.skill-icon-wrap,.build-card,.proj-card,.link-card').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{
+    curCanvas.style.transform='scale(1.8)';
+    curCanvas.style.filter='hue-rotate(180deg)';
   });
-  el.addEventListener('mouseleave', () => {
-    curCanvas.style.transform = 'scale(1)';
-    curCanvas.style.filter = 'none';
+  el.addEventListener('mouseleave',()=>{
+    curCanvas.style.transform='scale(1)';
+    curCanvas.style.filter='none';
   });
 });
 </script>
